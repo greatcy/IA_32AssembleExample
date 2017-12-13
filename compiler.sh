@@ -1,14 +1,21 @@
 #!/bin/bash
 
+#TODO use makefile to compile program 
 if [ -n "$1" ];then
 	echo "compiling $1"
+	
+	if [ ! -d build ];then
+		mkdir build
+	fi
+	buildDir=build/
+
 	name=$(echo $1|sed 's/\..*$//')
 	#echo "deal name is"$name
-	as -gstabs -o $name".o" $1
+	as -gstabs -o $buildDir$name".o" $1
 	if [ $? -eq 0 ];then
-		ld -o $name $name".o"
+		ld -o $buildDir$name $buildDir$name".o"
 	fi
-	if [ -f $name ];then
+	if [ -f $buildDir$name ];then
 		#if [ -f $name ];then
 		#	rm $name".o"
 		#fi
