@@ -1,0 +1,3 @@
+This is some example during learning IA32Assemble.
+* compiler.sh is a simple compiler shell.
+  use by type ./compiler.sh xxx.s.It will produce a xxx.o file and linked executable file.
